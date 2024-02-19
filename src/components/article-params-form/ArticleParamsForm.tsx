@@ -70,12 +70,7 @@ export const ArticleParamsForm = ({
 			<ArrowButton handleClick={toggleClick} />
 			<aside className={articleStyle}>
 				<form className={styles.form} onSubmit={onSubmit}>
-					<Text
-						as='h2'
-						size={31}
-						weight={800}
-						align='center'
-						family='open-sans'>
+					<Text as='h2' size={31} weight={800} align='left' family='open-sans'>
 						Задайте параметры
 					</Text>
 					<Select
