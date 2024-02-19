@@ -67,7 +67,7 @@ export const ArticleParamsForm = ({
 
 	return (
 		<>
-			<ArrowButton handleClick={toggleClick} />
+			<ArrowButton handleClick={toggleClick} open={open}/>
 			<aside className={articleStyle}>
 				<form className={styles.form} onSubmit={onSubmit}>
 					<Text as='h2' size={31} weight={800} align='left' family='open-sans'>
