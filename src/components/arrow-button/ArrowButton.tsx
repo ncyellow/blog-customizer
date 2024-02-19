@@ -13,9 +13,15 @@ export type ArrowButtonProps = {
 
 export const ArrowButton = (props: ArrowButtonProps) => {
 	// Стили кнопки
-	const arrowStyle = clsx({
+	const arrowContanerStyle = clsx({
 		[styles.container]: true,
 		[styles.container_open]: props.open,
+	});
+
+	// Стили стрелки
+	const arrowStyle = clsx({
+		[styles.arrow]: true,
+		[styles.arrow_open]: props.open,
 	});
 
 	return (
@@ -25,8 +31,8 @@ export const ArrowButton = (props: ArrowButtonProps) => {
 			role='button'
 			aria-label='Открыть/Закрыть форму параметров статьи'
 			tabIndex={0}
-			className={arrowStyle}>
-			<img src={arrow} alt='иконка стрелочки' className={styles.arrow} />
+			className={arrowContanerStyle}>
+			<img src={arrow} alt='иконка стрелочки' className={arrowStyle} />
 		</div>
 	);
 };
