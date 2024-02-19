@@ -5,10 +5,30 @@ import plane from 'src/images/plane.png';
 import { Text } from 'components/text';
 
 import styles from './Article.module.scss';
+import { useLayoutEffect, useRef } from 'react';
 
-export const Article = () => {
+type ArticalProps = {
+	// Вызывается при клике на статью
+	articleClicked: () => void;
+};
+
+export const Article = ({ articleClicked: articleCicked }: ArticalProps) => {
+	const ref = useRef<HTMLElement>(null);
+
+	//! Именно useLayoutEffect, так как у нас подписка на DOM элемент
+	useLayoutEffect(() => {
+		if (ref.current) {
+			ref.current.addEventListener('click', articleCicked);
+		}
+		return () => {
+			if (ref.current) {
+				ref.current.removeEventListener('click', articleCicked);
+			}
+		};
+	});
+
 	return (
-		<article className={clsx(styles.article)}>
+		<article ref={ref} className={clsx(styles.article)}>
 			<Text as='h1' size={45} weight={800} uppercase dynamicLite>
 				Портрет Западной Швейцарии
 			</Text>
